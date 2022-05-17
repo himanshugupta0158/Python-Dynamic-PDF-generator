@@ -1,6 +1,12 @@
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 
+# my_path='G:\\My drive\\testing\\pypdf2\\my_pdf.pdf' 
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter, A4
+import os
+
+my_path=f"{str(os.getcwd())}\\my_pdf.pdf"
 
 #Data setting for invoice , Can be generated from Database or Excel ##
 my_prod={1:['Hard Disk',80],2:['RAM',90],3:['Monitor',75],
@@ -20,7 +26,7 @@ def my_temp(c):
 # choose some colors
     c.setStrokeColorRGB(0.1,0.8,0.1)
     c.setFillColorRGB(0,0,1) # font colour
-    c.drawImage('D:\\top2.jpg',-0.8*inch,9.3*inch)
+    # c.drawImage('D:\\top2.jpg',-0.8*inch,9.3*inch)
     c.drawString(0, 9*inch, "Shop No : 1234, ABCD Road")
     c.drawString(0, 8.7*inch, "City Name: Mycity, ZIP : 12345")
     c.setFillColorRGB(0,0,0) # font colour
@@ -65,12 +71,6 @@ def my_temp(c):
     
     return c
 
-from reportlab.pdfgen import canvas
-my_path='G:\\My drive\\testing\\pypdf2\\my_pdf.pdf' 
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter, A4
-from temp_invoice import my_temp # import the template
-from invoice_data import *  # get all data required for invoice
 
 #my_prod={1:['Hard Disk',80,1],2:['RAM',90,2],3:['Monitor',75,2]}
 c = canvas.Canvas(my_path,pagesize=letter)
